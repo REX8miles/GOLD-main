@@ -1,4 +1,0 @@
-python train_dance_nearest.py --config configs/oh_eta0.05.yaml --source ./txt/source_Art_opda.txt --target ./txt/target_Clipart_opda.txt --exp_name "eta_experiment"
-python train_dance_nearest.py --config configs/oh_eta0.075.yaml --source ./txt/source_Art_opda.txt --target ./txt/target_Clipart_opda.txt --exp_name "eta_experiment"
-python train_dance_nearest.py --config configs/oh_eta0.125.yaml --source ./txt/source_Art_opda.txt --target ./txt/target_Clipart_opda.txt --exp_name "eta_experiment"
-python train_dance_nearest.py --config configs/oh_eta0.15.yaml --source ./txt/source_Art_opda.txt --target ./txt/target_Clipart_opda.txt --exp_name "eta_experiment"
