@@ -297,36 +297,10 @@ def train():
                 loss_s.item(), loss_nc.item(), loss_ent.item(), loss_oodscore.item()))
 
         if step > 0 and step % conf.test.test_interval == 0:
-            # hyper = partial(test_hyper, dataset_test=dataset_test, n_share=n_share, unk_class=num_class, G=G, C1=C1, NS=NS, u=u,
-            #                 sorted_ood=sorted_score, sorted_logit=sorted_logit, thr_ood=thr_ood, thr_logit=thr_logit)
-            # best_threshold = fmin(
-            #     # fn=test_hyper(dataset_test=dataset_test, n_share=n_share, unk_class=num_class, G=G, C1=C1, NS=NS, u=u,
-            #     #               sorted_ood=sorted_score, sorted_logit=sorted_logit, thr_ood=thr_ood, thr_logit=thr_logit),
-            #     fn=hyper,
-            #     space=space,
-            #     algo=tpe.suggest,
-            #     max_evals=100
-            # )
-
             best_result = test_hyper(step=step, dataset_test=dataset_test, filename=filename,
                                      n_share=n_share, unk_class=num_class, G=G, C1=C1, NS=NS, u=u,
                                      sorted_ood=sorted_score, sorted_logit=sorted_logit, best_result=best_result)
-            # best_acc = test_hyper(dataset_test=dataset_test, n_share=n_share, unk_class=num_class, G=G, C1=C1, NS=NS, u=u,
-            #                             sorted_ood=sorted_score, sorted_logit=sorted_logit, thr_ood=thr_ood, thr_logit=thr_logit)
-            # print("best accurcy:%s", best_acc)
-            # print('thr_ood:', best_threshold['thr_ood'])
-            # print('thr_logit:', best_threshold['thr_logit'])
-            # if thr_ood == 0 and thr_logit == 0:
-            # thr_ood = best_threshold['thr_ood']
-            # thr_logit = best_threshold['thr_logit']
-            # thr_ood = 30
-            # thr_logit = 30
-            # else:
-            #     thr_ood = 0.8 * thr_ood + 0.2 * best_threshold['thr_ood']
-            #     thr_logit = 0.8 * thr_logit + 0.2 * best_threshold['thr_logit']
-
-            # best_result = test_ood(step, dataset_test, filename, n_share, num_class, G, C1,
-            #                 sorted_score[int(thr_ood)].item(), NS, u, sorted_logit[int(thr_logit)].item(), best_result)
+            
             G.train()
             C1.train()
 
